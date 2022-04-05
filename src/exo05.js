@@ -8,7 +8,16 @@ const paroles = [
 export const instructions = [];
 
 // TOFIX: imprimer la chanson correctement
-for (var i = 0; i < paroles.length; i++) {
+/*for (var i = 0; i < paroles.length; i++) {
+  (function (iLocal) {
+    instructions.push(function printNextLine() {
+      return paroles[iLocal] + ", " + paroles[iLocal];
+    });
+  })(i);
+}*/
+
+// TOFIX: imprimer la chanson correctement
+for (let i = 0; i < paroles.length; i++) {
   instructions.push(function printNextLine() {
     return paroles[i] + ", " + paroles[i];
   });

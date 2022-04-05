@@ -2,5 +2,10 @@
 // { a: "b" } => { b: "a" }
 
 export function invertKeysAndValues(obj) {
-  return obj;
+  let objToReturn = {};
+  for (let key of Object.keys(obj)) {
+    objToReturn[obj[key]] = key;
+  }
+
+  return objToReturn;
 }
