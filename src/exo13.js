@@ -3,6 +3,17 @@
 export function promisify(fn) {
   // TODO: retourner une fonction appelant fn mais
   // retournant une Promise au lieu de passer un callback
+  return function (...args) {
+    return new Promise((resolve, reject) => {
+      fn(function callback(error, result) {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(result);
+        }
+      }, ...args);
+    });
+  };
 }
 
 // exemple d'utilisation
@@ -18,6 +29,9 @@ wait(1000)
   })
   .then(() => {
     console.log("3");
+  })
+  .catch((error) => {
+    console.log("Erreur : " + error);
   });
 
 //Mauvaise forme -> enchainement de callback
